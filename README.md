@@ -21,6 +21,6 @@ A Comparative Analysis on the Export Competitiveness Focusing on TSI
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ## 👨‍💻Teams
 |  ----  |  ----  |  ----  | 
-| :----------: |  :----------:  |  :---------: |  
-| [<img src="https://avatars.githubusercontent.com/u/86038910?v=4" width=295px alt="_"/>ro117youshinKIM](https://github.com/ro117youshinKIM) | [<img src="https://avatars.githubusercontent.com/u/63415138?v=4" width=330px alt="_"/>BradKim59](https://github.com/BradKim59) | [<img src="https://avatars.githubusercontent.com/u/102018797?v=4" width=295px alt="_"/>SeungChanAhn](https://github.com/SeungChanAhn) | 
+| :----------: |  :----------:  |  :----------: |  
+| [<img src="https://avatars.githubusercontent.com/u/86038910?v=4" width=280px alt="_"/>ro117youshinKIM](https://github.com/ro117youshinKIM) | [<img src="https://avatars.githubusercontent.com/u/63415138?v=4" width=295px alt="_"/>BradKim59](https://github.com/BradKim59) | [<img src="https://avatars.githubusercontent.com/u/102018797?v=4" width=290px alt="_"/>SeungChanAhn](https://github.com/SeungChanAhn) | 
 |  🔥   |    🚴   |   ⚽  | 
