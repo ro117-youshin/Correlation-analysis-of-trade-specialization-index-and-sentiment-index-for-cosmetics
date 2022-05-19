@@ -1,14 +1,11 @@
 package competitivenessinexport;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.RenderingHints;
-import java.awt.Stroke;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,17 +17,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+@SuppressWarnings("serial")
 public class GraphPanel2 extends JPanel {
 
 	public static final int width = 800;
 	public static final int heigth = 400;
-	public static final int padding = 100;
-	public static final int labelPadding = 100;
+	public static final int padding = 25;
+	public static final int labelPadding = 25;
 	private int pointWidth = 4;
 	private int numberYDivisions = 10;
 	private Color gridColor = new Color(200, 200, 200, 200);
-	static List<String> date = new ArrayList<>(); // xÁÂÇ¥ ±â°£À» Âï±â À§ÇÑ Àü¿ª ¼±¾ğ
-	static List<String> csvData = new ArrayList<>(); // xÁÂÇ¥¸¦ Âï´Â ÇÔ¼ö¿Í TSIÁö¼ö Âï´Â ÇÔ¼ö¿¡ »ç¿ëµÇ±â ¶§¹®¿¡ Àü¿ª ¼±¾ğ
+	static List<String> date = new ArrayList<>(); // xì¢Œí‘œ ê¸°ê°„ì„ ì°ê¸° ìœ„í•œ ì „ì—­ ì„ ì–¸
+	static List<String> csvData = new ArrayList<>(); // xì¢Œí‘œë¥¼ ì°ëŠ” í•¨ìˆ˜ì™€ TSIì§€ìˆ˜ ì°ëŠ” í•¨ìˆ˜ì— ì‚¬ìš©ë˜ê¸° ë•Œë¬¸ì— ì „ì—­ ì„ ì–¸
 
 	private List<LineData> lines;
 	LineData line;
@@ -62,7 +60,7 @@ public class GraphPanel2 extends JPanel {
 				g2.setColor(gridColor);
 				g2.drawLine(padding + labelPadding + 1 + pointWidth, y0, getWidth() - padding, y1);
 				g2.setColor(Color.BLACK);
-				String yLabel = ((int) ((getMinScore() + (getMaxScore() - getMinScore()) * ((index * 1.0) / numberYDivisions)) * 100)) / 100.0 + "";
+				String yLabel = ((int) ((-1 + (1 - (-1)) * ((index * 1.0) / numberYDivisions)) * 100)) / 100.0 + "";
 				FontMetrics metrics = g2.getFontMetrics();
 				int labelWidth = metrics.stringWidth(yLabel);
 				g2.drawString(yLabel, x0 - labelWidth - 5, y0 + (metrics.getHeight() / 2) - 3);
@@ -70,7 +68,7 @@ public class GraphPanel2 extends JPanel {
 			g2.drawLine(x0, y0, x1, y1);
 		}
 
-		// and for x axis, x ÃàÀº CSV file ÀÎµ¦½º 0¹øÂ° ¹è¿­À» »Ñ·Á¼­ ±â°£À» StringÀ¸·Î Âï¾îÁØ´Ù. (arrDateOfData)
+		// and for x axis, x ì¶•ì€ CSV file ì¸ë±ìŠ¤ 0ë²ˆì§¸ ë°°ì—´ì„ ë¿Œë ¤ì„œ ê¸°ê°„ì„ Stringìœ¼ë¡œ ì°ì–´ì¤€ë‹¤. (arrDateOfData)
 		String[] arrDateOfData = null;
 		for (int index = 0; index < line.scores.size(); index++) {
 			arrDateOfData = csvData.get(index).split(",");
@@ -83,7 +81,7 @@ public class GraphPanel2 extends JPanel {
 					g2.setColor(gridColor);
 					g2.drawLine(x0, getHeight() - padding - labelPadding - 1 - pointWidth, x1, padding);
 					g2.setColor(Color.BLACK);
-					String xLabel = arrDateOfData[0] + ""; // x Ãà ÁÂÇ¥¿¡ µ¥ÀÌÅÍ ±â°£À¸·Î Âï±â
+					String xLabel = arrDateOfData[0] + ""; // x ì¶• ì¢Œí‘œì— ë°ì´í„° ê¸°ê°„ìœ¼ë¡œ ì°ê¸°
 					FontMetrics metrics = g2.getFontMetrics();
 					int labelWidth = metrics.stringWidth(xLabel);
 					g2.drawString(xLabel, x0 - labelWidth / 2, y0 + metrics.getHeight() + 3);
@@ -98,24 +96,9 @@ public class GraphPanel2 extends JPanel {
 
 		for (int index = 0; index < lines.size(); index++) {
 			LineData line = lines.get(index);
-			line.draw(g2, getWidth(), getHeight(), getMaxScore(), getMinScore());
-		}
-	}
 
-	private double getMinScore() {
-		double minScore = Double.MAX_VALUE;
-		for (Double score : line.scores) {
-			minScore = Math.min(minScore, score);
+			line.draw(g2, getWidth(), getHeight(), 1, -1);
 		}
-		return minScore;
-	}
-
-	private double getMaxScore() {
-		double maxScore = Double.MIN_VALUE;
-		for (Double score : line.scores) {
-			maxScore = Math.max(maxScore, score);
-		}
-		return maxScore;
 	}
 
 	public void setScores(List<Double> scores) {
@@ -128,9 +111,9 @@ public class GraphPanel2 extends JPanel {
 		return line.scores;
 	}
 	
-	// ¹«¿ªÆ¯È­Áö¼ö(Trade Specialization Index)ÀÇ CSV file ÀĞ¾î¼­ ±×·¡ÇÁ À§¿¡ »Ñ¸®´Â ÇÔ¼ö 
+	// ë¬´ì—­íŠ¹í™”ì§€ìˆ˜(Trade Specialization Index)ì˜ CSV file ì½ì–´ì„œ ê·¸ë˜í”„ ìœ„ì— ë¿Œë¦¬ëŠ” í•¨ìˆ˜ 
 	public static void createAndShowGui() {
-		// list ¼±¾ğ ¹× ÃÊ±âÈ­, scores¸¦ ¹Ş¾Æ °´Ã¼ »ı¼º ¹× ÀÎ½ºÅÏ½º¸¦ »ı¼ºÇÏ¿© °´Ã¼¿¡ ¿¬°á
+		// list ì„ ì–¸ ë° ì´ˆê¸°í™”, scoresë¥¼ ë°›ì•„ ê°ì²´ ìƒì„± ë° ì¸ìŠ¤í„´ìŠ¤ë¥¼ ìƒì„±í•˜ì—¬ ê°ì²´ì— ì—°ê²°
 		List<Double> tradeSpecializationIndex1 = new ArrayList<>();
 		List<Double> tradeSpecializationIndex2 = new ArrayList<>();
 		String[] tsiData = null;
@@ -151,16 +134,15 @@ public class GraphPanel2 extends JPanel {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// ±×·¡ÇÁ À§¿¡ »Ñ¸®±â
+		// ê·¸ë˜í”„ ìœ„ì— ë¿Œë¦¬ê¸°
 		JFrame frame = new JFrame("Draw TSI Graph");
 		List<LineData> lines = new ArrayList<>();
-		lines.add(new LineData(tradeSpecializationIndex1)); // ¾ÆÀÌÅÛ 1 ±×·¡ÇÁ¿¡ »Ñ¸®±â
-		lines.add(new LineData(tradeSpecializationIndex2, Color.red, Color.red)); // ¾ÆÀÌÅÛ 2 ±×·¡ÇÁ¿¡ »Ñ¸®±â
+		lines.add(new LineData(tradeSpecializationIndex1)); // ì•„ì´í…œ 1 ê·¸ë˜í”„ì— ë¿Œë¦¬ê¸°
+		lines.add(new LineData(tradeSpecializationIndex2, Color.red, Color.red)); // ì•„ì´í…œ 2 ê·¸ë˜í”„ì— ë¿Œë¦¬ê¸°
 		GraphPanel2 mainPanel = new GraphPanel2(lines);
 		frame.getContentPane().add(mainPanel);
 		mainPanel.setPreferredSize(new Dimension(800, 600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLayout();
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
