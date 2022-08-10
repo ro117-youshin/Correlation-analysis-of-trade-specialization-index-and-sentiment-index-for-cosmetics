@@ -1,6 +1,6 @@
 
 --------------------------------------------
-# 📈About Export Competitiveness Analysis System
+# 📈Correlation analysis of trade specialization index and sentiment index for cosmetics
 &nbsp;&nbsp;화장품에 대한 무역특화지수와 뉴스 크롤링 감정 지수의 상관 관계 분석
 
 
