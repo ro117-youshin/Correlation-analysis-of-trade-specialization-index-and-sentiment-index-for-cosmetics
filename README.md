@@ -4,11 +4,7 @@
 
 --------------------------------------------
 # 📈About Export Competitiveness Analysis System
-A Comparative Analysis on the Export Competitiveness Focusing on TSI
-
-
-## Getting Started
-
+&nbsp;&nbsp;화장품에 대한 무역특화지수와 뉴스 크롤링 감정 지수의 상관 관계 분석
 
 
 ## Overview
@@ -17,10 +13,13 @@ A Comparative Analysis on the Export Competitiveness Focusing on TSI
 +
 +
 ## 🛠️Technical Skills
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+- Java와 Selenium을 활용한 웹 크롤링
+- Python을 이용한 뉴스크롤링
+- Javaswing으로 데이터 그래프 그리기
+
 ## 👨‍💻Teams
+
 |  ----  |  ----  |  ----  | 
 | :----------: |  :----------:  |  :----------: |  
-| [<img src="https://avatars.githubusercontent.com/u/63415138?v=4" width=295px alt="_"/>BradKim59](https://github.com/BradKim59) | [<img src="https://avatars.githubusercontent.com/u/102018797?v=4" width=290px alt="_"/>SeungChanAhn](https://github.com/SeungChanAhn) | [<img src="https://user-images.githubusercontent.com/86038910/167899367-1931db9a-16d6-4e84-8c1c-b29ddf67cb59.gif" width=280px alt="_"/>ro117youshinKIM](https://github.com/ro117youshinKIM) |
-|  🔥   |    🚴   |   ⚽  | 
+| <img src="https://avatars.githubusercontent.com/u/63415138?v=4" width="200" height="200"/> | <img src="https://avatars.githubusercontent.com/u/102018797?v=4" width="200" height="200"/> | <img src="https://user-images.githubusercontent.com/86038910/183784356-6d862855-d980-460d-bf88-c72c1109144b.jpg" width="200" height="200"/>|
+|  [BradKim59](https://github.com/BradKim59)   |    [SeungChanAhn](https://github.com/SeungChanAhn)   |   [ro117youshinKIM](https://github.com/ro117youshinKIM)  | 
