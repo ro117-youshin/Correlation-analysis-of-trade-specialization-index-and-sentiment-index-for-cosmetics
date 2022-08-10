@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
-public class GraphPanel2 extends JPanel {
+public class GraphPanel extends JPanel {
 
 	public static final int width = 800;
 	public static final int heigth = 400;
@@ -32,7 +32,7 @@ public class GraphPanel2 extends JPanel {
 	private List<LineData> lines;
 	LineData line;
 
-	public GraphPanel2(List<LineData> lines) {
+	public GraphPanel(List<LineData> lines) {
 		this.lines = lines;
 		line = lines.get(0);
 	}
@@ -43,7 +43,7 @@ public class GraphPanel2 extends JPanel {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		// draw white background
+		// 배경 
 		g2.setColor(Color.WHITE);
 		g2.fillRect(padding + labelPadding, padding, getWidth() - (2 * padding) - labelPadding,
 				getHeight() - 2 * padding - labelPadding);
@@ -93,7 +93,7 @@ public class GraphPanel2 extends JPanel {
 			}
 		}
 
-		// create x and y axis
+		// x축과 y축 그리기
 		g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, padding + labelPadding, padding);
 		g2.drawLine(padding + labelPadding, getHeight() - padding - labelPadding, getWidth() - padding,
 				getHeight() - padding - labelPadding);
@@ -111,7 +111,6 @@ public class GraphPanel2 extends JPanel {
 		List<String> emotionIndexCsvData = new ArrayList<>();
 		List<Double> tradeSpecializationIndex = new ArrayList<>();
 		List<Double> tradeSpecializationIndex2 = new ArrayList<>();
-		List<Double> tradeSpecializationIndex3 = new ArrayList<>();
 		List<Double> emotionIndex = new ArrayList<>();
 		
 		try {
@@ -125,7 +124,6 @@ public class GraphPanel2 extends JPanel {
 				String[] tsiData = csvData.get(index).split(",");
 				tradeSpecializationIndex.add(Double.parseDouble(tsiData[1]));
 				tradeSpecializationIndex2.add(Double.parseDouble(tsiData[2]));
-				tradeSpecializationIndex3.add(Double.parseDouble(tsiData[3]));
 			}
 			
 			String lineOfEmotionIndex;
@@ -135,8 +133,7 @@ public class GraphPanel2 extends JPanel {
 			for (int index = 0; index < emotionIndexCsvData.size(); index++) {
 				String[] eiData = emotionIndexCsvData.get(index).split(",");
 				emotionIndex.add(Double.parseDouble(eiData[3]));
-			}
-			
+			}			
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -150,12 +147,10 @@ public class GraphPanel2 extends JPanel {
 		lines.add(new LineData(tradeSpecializationIndex)); // 무역특화지수 그래프에 뿌리기
 		lines.add(new LineData(emotionIndex, Color.red, Color.red)); // 뉴스기사 크롤링 감정지수 그래프에 뿌리기
 		lines.add(new LineData(tradeSpecializationIndex2, Color.green, Color.green));
-		lines.add(new LineData(tradeSpecializationIndex3, Color.yellow, Color.yellow));
-		GraphPanel2 mainPanel = new GraphPanel2(lines);
+		GraphPanel mainPanel = new GraphPanel(lines);
 		frame.getContentPane().add(mainPanel);
 		mainPanel.setPreferredSize(new Dimension(800, 600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLayout();
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
